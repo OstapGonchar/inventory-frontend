@@ -56,6 +56,15 @@
   color:white;
   font-size: 20px;
   margin:auto;
+  transition: 2s;
+}
+.small-text:hover {
+  margin-left: 10px;
+  transition: 2s smooth;
+}
+
+table {
+  width: 100%;
 }
 
 table {
