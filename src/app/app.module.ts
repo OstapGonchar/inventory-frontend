@@ -9,17 +9,10 @@ import { MatListModule } from '@angular/material/list';
 import { AppComponent } from './app.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-<<<<<<< Updated upstream
-import {MatTableModule} from '@angular/material/table';
-
-
-
-=======
 import { MatTableModule } from '@angular/material/table';
 import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
 import { OffersComponent } from './offers/offers.component';
->>>>>>> Stashed changes
 @NgModule({
   declarations: [
     AppComponent,
