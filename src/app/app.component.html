@@ -1,68 +1,26 @@
-<mat-toolbar color="primary">
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>Inventory</span>
-  <span class="example-spacer"></span>
-  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-    <mat-icon>favorite</mat-icon>
-  </button>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-    <mat-icon>share</mat-icon>
-  </button>
-</mat-toolbar>
-<div class="intro">
-  <span class="title-text-blue">Inventory</span> <span class="title-text"> makes organisation easy.</span>
-  <div class="divider"></div>
- <button class="cta"><p class="small-text">Try it now. &#8594;</p></button>
- <button class="cta"><p class="small-text">Watch the video. &#8594;</p></button>
-</div>
+<mat-drawer-container class="main-container" autosize>
+  <mat-drawer #drawer class="main-sidenav" mode="side">
+    <mat-nav-list>
+      <mat-list-item routerLink="/" routerLinkActive="active">Home</mat-list-item>
+      <mat-list-item routerLink="/products" routerLinkActive="active">Products</mat-list-item>
+      <mat-list-item routerLink="/offers" routerLinkActive="active">Offers</mat-list-item>
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Inventory</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+      </button>
+    </mat-toolbar>
 
-<div class="intro">
-  <span class="title-text">How </span><span class="title-text-blue">Inventory</span> <span class="title-text"> Works</span>
-  <div class="divider"></div>
-  
- <button class="cta"><p class="small-text">See it in action. <span>&#8594;</span></p></button>
-</div>
-
-<div class="intro">
-  <span class="title-text-blue">Inventory </span> <span class="title-text">is developped jointly by []</span>
-  <div class="divider"></div>
-  
- <button class="cta"><p class="small-text">See their works here. &#8594;</p></button>
-</div>
-<div class="divider"></div>
-<div class="intro">
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-  
-    <!-- Position Column -->
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-    </ng-container>
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
-  
-    <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
-      <th mat-header-cell *matHeaderCellDef> Weight </th>
-      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-    </ng-container>
-  
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
-      <th mat-header-cell *matHeaderCellDef> Symbol </th>
-      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-    </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-</div>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
