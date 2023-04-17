@@ -1,5 +1,7 @@
 import { Inter } from "next/font/google";
 import Example from "./product-list";
+import Link from "next/link";
+import Offers from "./offer-list";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -40,6 +42,7 @@ export default function Home() {
       </div>
       <div className="divider"></div>
 
+      <Link href="/offer-list">Click to see offer</Link>
       <Example></Example>
     </main>
   );
