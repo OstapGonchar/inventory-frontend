@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google";
+import Example from "./product-list";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -38,6 +39,8 @@ export default function Home() {
         </button>
       </div>
       <div className="divider"></div>
+
+      <Example></Example>
     </main>
   );
 }
