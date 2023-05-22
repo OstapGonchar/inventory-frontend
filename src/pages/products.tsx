@@ -2,17 +2,28 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Table } from 'react-bootstrap';
 import { Product } from './models/product';
+import ProductModal from './components/product-modal';
 
 const ProductsPage: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
-  useEffect(() => {
+  const fetchProducts = () => {
     axios.get('http://localhost:8080/api/product/all')
       .then(response => {
         setProducts(response.data);
       })
       .catch(error => console.error(`Error: ${error}`));
+  };
+
+  useEffect(() => {
+    fetchProducts();
   }, []);
+
+  const handleClose = () => {
+    setSelectedProduct(null);
+    fetchProducts(); // Refresh the products list
+  }
 
   return (
     <>
@@ -30,7 +41,7 @@ const ProductsPage: React.FC = () => {
         </thead>
         <tbody>
           {products.map(product => (
-            <tr key={product.id}>
+            <tr key={product.id} onClick={() => setSelectedProduct(product)}>
               <td>{product.id}</td>
               <td>{product.name}</td>
               <td>{product.description}</td>
@@ -41,6 +52,7 @@ const ProductsPage: React.FC = () => {
           ))}
         </tbody>
       </Table>
+      {selectedProduct && <ProductModal product={selectedProduct} onClose={handleClose} />}
     </>
   );
 }
